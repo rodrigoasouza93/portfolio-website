@@ -1,19 +1,22 @@
 import Header from "@/components/header"
 import Hero from "@/components/hero"
-import Skills from "@/components/skills"
-import Projects from "@/components/projects"
+import Stack from "@/components/Stack"
+import SelectedWork from "@/components/SelectedWork"
+import About from "@/components/About"
 import Contact from "@/components/contact"
-import Footer from "@/components/footer"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <Skills />
-      <Projects />
+      <Stack />
+      <SelectedWork />
+      <About />
       <Contact />
-      <Footer />
+      <footer className="py-8 text-center text-muted-foreground text-sm">
+        © {new Date().getFullYear()} Rodrigo Souza. All rights reserved.
+      </footer>
     </main>
   )
 }

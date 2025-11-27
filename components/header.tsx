@@ -1,41 +1,28 @@
 import Link from "next/link"
+import Image from "next/image"
+import { ThemeToggle } from "@/components/theme-toggle"
 
-interface HeaderProps {
-  showBackLink?: boolean
-}
-
-export default function Header({ showBackLink = false }: HeaderProps) {
+export default function Header() {
   return (
-    <header className="container mx-auto py-6 px-4">
-      <div className="flex justify-between items-center">
-        <Link href="/" className="text-blue-600 font-bold text-xl">
-          <span>rodrigo</span>
-          <span className="text-gray-800">souza</span>
-          <span className="text-blue-600">.dev</span>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-12 h-12 relative">
+            <Image src="/assets/logo.png" alt="Logo" fill className="object-contain" />
+          </div>
+          <span className="font-bold text-foreground tracking-tight">RODRIGO SOUZA</span>
         </Link>
 
-        {showBackLink ? (
-          <Link href="/" className="text-gray-600 hover:text-gray-900">
-            Voltar
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Projetos
           </Link>
-        ) : (
-          <nav className="hidden md:flex space-x-6">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Início
-            </Link>
-            <Link href="#skills" className="text-gray-600 hover:text-gray-900">
-              Habilidades
-            </Link>
-            <Link href="#projects" className="text-gray-600 hover:text-gray-900">
-              Projetos
-            </Link>
-            <Link href="#contact" className="text-gray-600 hover:text-gray-900">
-              Contato
-            </Link>
-          </nav>
-        )}
+          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Contato
+          </Link>
+          <ThemeToggle />
+        </nav>
       </div>
     </header>
   )
 }
-

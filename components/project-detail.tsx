@@ -10,20 +10,20 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+      <h1 className="text-3xl font-bold mb-4 text-foreground">{project.title}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {project.technologies.map((tech) => (
-          <span key={tech} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+          <span key={tech} className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
             {tech}
           </span>
         ))}
       </div>
 
-      <p className="text-gray-600 mb-8">{project.fullDescription}</p>
+      <p className="text-muted-foreground mb-8">{project.fullDescription}</p>
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div className="bg-purple-50 p-4 rounded-lg">
+        <div className="bg-muted p-4 rounded-lg">
           <div className="relative h-64 md:h-80 rounded-lg overflow-hidden">
             <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
           </div>
@@ -44,20 +44,20 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h3 className="text-sm text-gray-500 mb-1">Project Duration</h3>
-                <p className="font-semibold">{project.duration}</p>
+                <h3 className="text-sm text-muted-foreground mb-1">Project Duration</h3>
+                <p className="font-semibold text-foreground">{project.duration}</p>
               </div>
               <div>
-                <h3 className="text-sm text-gray-500 mb-1">Team Size</h3>
-                <p className="font-semibold">{project.teamSize}</p>
+                <h3 className="text-sm text-muted-foreground mb-1">Team Size</h3>
+                <p className="font-semibold text-foreground">{project.teamSize}</p>
               </div>
               <div>
-                <h3 className="text-sm text-gray-500 mb-1">Role</h3>
-                <p className="font-semibold">{project.role}</p>
+                <h3 className="text-sm text-muted-foreground mb-1">Role</h3>
+                <p className="font-semibold text-foreground">{project.role}</p>
               </div>
               <div>
-                <h3 className="text-sm text-gray-500 mb-1">Completion</h3>
-                <p className="font-semibold">{project.completion}</p>
+                <h3 className="text-sm text-muted-foreground mb-1">Completion</h3>
+                <p className="font-semibold text-foreground">{project.completion}</p>
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <div className="grid md:grid-cols-2 gap-12 mb-12">
         <div>
-          <h2 className="text-2xl font-bold mb-6">Project Overview</h2>
-          <div className="space-y-4 text-gray-600">
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Project Overview</h2>
+          <div className="space-y-4 text-muted-foreground">
             {project.overview.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -75,12 +75,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Key Features</h2>
           <ul className="space-y-4">
             {project.features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <Check className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-600">{feature}</span>
+                <Check className="w-5 h-5 text-primary mr-2 mt-1 flex-shrink-0" />
+                <span className="text-muted-foreground">{feature}</span>
               </li>
             ))}
           </ul>
@@ -89,12 +89,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {project.challenges && (
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Challenges & Solutions</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Challenges & Solutions</h2>
           <div className="space-y-8">
             {project.challenges.map((challenge, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="font-bold text-lg mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
+              <div key={index} className="bg-muted/50 p-6 rounded-lg">
+                <h3 className="font-bold text-lg mb-2 text-foreground">{challenge.title}</h3>
+                <p className="text-muted-foreground">{challenge.description}</p>
               </div>
             ))}
           </div>
@@ -103,14 +103,14 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <div className="grid md:grid-cols-2 gap-12">
         <div>
-          <h2 className="text-2xl font-bold mb-6">Tech Stack</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Tech Stack</h2>
           <ul className="space-y-4">
             {project.techStack.map((tech, index) => (
               <li key={index} className="flex items-start">
-                <div className="w-6 h-6 mr-3 flex-shrink-0">{tech.icon}</div>
+                <div className="w-6 h-6 mr-3 flex-shrink-0 text-foreground">{tech.icon}</div>
                 <div>
-                  <h3 className="font-medium">{tech.name}</h3>
-                  {tech.description && <p className="text-sm text-gray-600">{tech.description}</p>}
+                  <h3 className="font-medium text-foreground">{tech.name}</h3>
+                  {tech.description && <p className="text-sm text-muted-foreground">{tech.description}</p>}
                 </div>
               </li>
             ))}
@@ -118,7 +118,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         {project.testimonial && (
-          <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="bg-muted/50 p-6 rounded-lg">
             <div className="flex items-center mb-4">
               <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
                 <Image
@@ -129,11 +129,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 />
               </div>
               <div>
-                <h3 className="font-bold">{project.testimonial.name}</h3>
-                <p className="text-sm text-gray-600">{project.testimonial.role}</p>
+                <h3 className="font-bold text-foreground">{project.testimonial.name}</h3>
+                <p className="text-sm text-muted-foreground">{project.testimonial.role}</p>
               </div>
             </div>
-            <p className="text-gray-600 italic">"{project.testimonial.text}"</p>
+            <p className="text-muted-foreground italic">"{project.testimonial.text}"</p>
           </div>
         )}
       </div>

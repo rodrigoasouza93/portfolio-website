@@ -1,45 +1,71 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { ArrowRight, Github, Linkedin } from "lucide-react"
+import { calculateYearsOfExperience } from "@/lib/utils"
 
 export default function Hero() {
+  const yearsOfExperience = calculateYearsOfExperience(new Date("2018-03-01"))
+
   return (
-    <section className="container mx-auto py-16 px-4">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Full Stack Developer
-            <br />
-            <span className="text-blue-600">Criando Soluções</span>
-            <br />
-            <span className="text-blue-600">Digitais</span>
-          </h1>
-          <p className="text-gray-600 text-lg">
-          Olá, sou Rodrigo Souza, um desenvolvedor full-stack apaixonado com 8 anos de experiência em construção de aplicações. 
-          Sou especialista em criar soluções eficientes, escaláveis ​​e fáceis de usar.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Button asChild>
-              <Link href="#contact">Entre em contato</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="#projects">Ver Projetos</Link>
-            </Button>
-          </div>
+    // Fundo escuro profundo (Slate 950)
+    <section className="flex flex-col justify-center min-h-screen px-6 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto w-full relative z-10">
+        {/* Tagline pequena com cor de acento */}
+        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-6">
+          Engenheiro de Software & Sistemas
+        </p>
+
+        {/* Título com Gradiente (Efeito Premium) */}
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
+          Rodrigo Souza<span className="text-primary">.</span>
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-slate-200 dark:to-slate-500">
+            Performance First.
+          </span>
+        </h1>
+
+        {/* Descrição com cor suavizada para leitura */}
+        <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-12 border-l-2 border-primary/20 pl-6">
+          Especialista Fullstack Sênior ({yearsOfExperience}+ anos). Foco na arquitetura de soluções
+          escaláveis com <strong className="text-foreground">Go</strong> e ecossistemas <strong className="text-foreground">React/Native</strong>.
+          Transformando complexidade em interfaces limpas.
+        </p>
+
+        {/* Botões com alto contraste e hover sutil */}
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="#projects"
+            className="group bg-primary text-primary-foreground px-8 py-3 rounded-md font-semibold hover:opacity-90 hover:scale-105 transition-all flex items-center gap-2"
+          >
+            Ver Projetos
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+
+          <a
+            href="https://github.com/rodrigoasouza93"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-8 py-3 rounded-md font-medium text-muted-foreground border border-input hover:border-primary/50 hover:text-primary hover:bg-accent transition-all"
+          >
+            <Github size={18} />
+            GitHub
+          </a>
+
+          <a
+            href="https://linkedin.com/in/rodrigoasouza93"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-8 py-3 rounded-md font-medium text-muted-foreground border border-input hover:border-primary/50 hover:text-primary hover:bg-accent transition-all"
+          >
+
+            <Linkedin size={18} />
+            LinkedIn
+          </a>
         </div>
-        <div className="flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <Image
-              src="https://lh3.googleusercontent.com/a/ACg8ocKUhf4k20h6b7ZO8b8cNeFDEkoIaWu8cLXMj1y_jFxhegatndPS=s288-c-no"
-              alt="Rodrigo Souza"
-              fill
-              className="rounded-full object-cover"
-              priority
-            />
-          </div>
+
+        {/* Indicador de Stack Tech (Visualmente discreto) */}
+        <div className="mt-20 pt-8 border-t border-border flex gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          <span className="text-sm font-mono text-muted-foreground">Tecnologias: Go • TypeScript • React Native • Node.js</span>
         </div>
       </div>
     </section>
   )
 }
-
