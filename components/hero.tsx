@@ -6,7 +6,7 @@ export default function Hero() {
 
   return (
     // Fundo escuro profundo (Slate 950)
-    <section className="flex flex-col justify-center min-h-screen px-6 relative overflow-hidden">
+    <section className="flex flex-col justify-center min-h-screen px-6 pt-20 relative overflow-hidden">
       <div className="max-w-4xl mx-auto w-full relative z-10">
         {/* Tagline pequena com cor de acento */}
         <p className="text-primary font-mono text-sm tracking-widest uppercase mb-6">

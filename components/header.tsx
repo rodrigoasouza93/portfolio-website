@@ -13,15 +13,17 @@ export default function Header() {
           <span className="font-bold text-foreground tracking-tight">RODRIGO SOUZA</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Projetos
-          </Link>
-          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Contato
-          </Link>
+        <div className="flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Projetos
+            </Link>
+            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Contato
+            </Link>
+          </nav>
           <ThemeToggle />
-        </nav>
+        </div>
       </div>
     </header>
   )
