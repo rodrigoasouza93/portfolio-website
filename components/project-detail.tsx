@@ -8,8 +8,9 @@ interface ProjectDetailProps {
 }
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {
+  console.log(project)
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 pt-24">
       <h1 className="text-3xl font-bold mb-4 text-foreground">{project.title}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
@@ -32,31 +33,48 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         <div className="flex flex-col justify-between">
           <div className="space-y-6">
             <div className="flex gap-4">
-              <Button className="flex items-center gap-2">
-                <Globe className="w-4 h-4" />
-                Live Demo
-              </Button>
-              <Button variant="outline" className="flex items-center gap-2">
-                <Code className="w-4 h-4" />
-                Source Code
-              </Button>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="flex items-center gap-2">
+                    <Globe className="w-4 h-4" />
+                    Demo ao Vivo
+                  </Button>
+                </a>
+              )}
+
+              {project.sourceUrl && (
+                <a
+                  href={project.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Code className="w-4 h-4" />
+                    Código Fonte
+                  </Button>
+                </a>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h3 className="text-sm text-muted-foreground mb-1">Project Duration</h3>
+                <h3 className="text-sm text-muted-foreground mb-1">Duração do Projeto</h3>
                 <p className="font-semibold text-foreground">{project.duration}</p>
               </div>
               <div>
-                <h3 className="text-sm text-muted-foreground mb-1">Team Size</h3>
+                <h3 className="text-sm text-muted-foreground mb-1">Tamanho da Equipe</h3>
                 <p className="font-semibold text-foreground">{project.teamSize}</p>
               </div>
               <div>
-                <h3 className="text-sm text-muted-foreground mb-1">Role</h3>
+                <h3 className="text-sm text-muted-foreground mb-1">Função</h3>
                 <p className="font-semibold text-foreground">{project.role}</p>
               </div>
               <div>
-                <h3 className="text-sm text-muted-foreground mb-1">Completion</h3>
+                <h3 className="text-sm text-muted-foreground mb-1">Conclusão</h3>
                 <p className="font-semibold text-foreground">{project.completion}</p>
               </div>
             </div>
@@ -66,7 +84,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <div className="grid md:grid-cols-2 gap-12 mb-12">
         <div>
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Project Overview</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Visão Geral</h2>
           <div className="space-y-4 text-muted-foreground">
             {project.overview.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -75,7 +93,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Key Features</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Principais Funcionalidades</h2>
           <ul className="space-y-4">
             {project.features.map((feature, index) => (
               <li key={index} className="flex items-start">
@@ -89,7 +107,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {project.challenges && (
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Challenges & Solutions</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Desafios e Soluções</h2>
           <div className="space-y-8">
             {project.challenges.map((challenge, index) => (
               <div key={index} className="bg-muted/50 p-6 rounded-lg">
@@ -103,7 +121,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <div className="grid md:grid-cols-2 gap-12">
         <div>
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Tech Stack</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Tecnologias</h2>
           <ul className="space-y-4">
             {project.techStack.map((tech, index) => (
               <li key={index} className="flex items-start">
@@ -122,7 +140,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             <div className="flex items-center mb-4">
               <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
                 <Image
-                  src="/placeholder.svg?height=48&width=48"
+                  src="https://avatar.iran.liara.run/public/boy"
                   alt={project.testimonial.name}
                   fill
                   className="object-cover"
