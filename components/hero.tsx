@@ -50,7 +50,7 @@ export default function Hero() {
           </a>
 
           <a
-            href="https://linkedin.com/in/rodrigoasouza93"
+            href="https://www.linkedin.com/in/rodrigo-augusto-santos-de-souza/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-8 py-3 rounded-md font-medium text-muted-foreground border border-input hover:border-primary/50 hover:text-primary hover:bg-accent transition-all"
