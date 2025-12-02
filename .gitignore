@@ -28,3 +28,8 @@ next-env.d.ts
 
 # Editor
 .vscode/
+
+# Playwright
+/playwright-report/
+/test-results/
+/playwright/.cache/
