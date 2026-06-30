@@ -1,0 +1,48 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = "Rodrigo Souza | Engenheiro de Software Fullstack",
+  description = "Portfólio de Rodrigo Souza, engenheiro fullstack com foco em Go, Node.js, TypeScript, React, Next.js, React Native e IA aplicada.",
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? Astro.url).toString();
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem("theme") || "system";
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const resolvedTheme = storedTheme === "system" ? (prefersDark ? "dark" : "light") : storedTheme;
+        document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
+        document.documentElement.dataset.theme = storedTheme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <slot />
+    </div>
+  </body>
+</html>

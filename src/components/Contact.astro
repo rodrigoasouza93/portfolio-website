@@ -1,0 +1,30 @@
+---
+import Icon from "@/components/Icon.astro";
+import { contactLinks } from "@/data/profile";
+
+const links = [
+  { href: contactLinks.linkedin, label: "LinkedIn", icon: "linkedin" },
+  { href: contactLinks.github, label: "GitHub", icon: "github" },
+  { href: contactLinks.email, label: "Email", icon: "mail" },
+] as const;
+---
+
+<section id="contact" class="mx-auto max-w-4xl px-6 py-12 text-center">
+  <h2 class="mb-8 text-3xl font-bold text-foreground">Vamos Trabalhar Juntos</h2>
+  <p class="mx-auto mb-12 max-w-xl text-muted-foreground">
+    Interessado em construir software de alta performance? Entre em contato para discutirmos seu projeto.
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-8">
+    {
+      links.map((link) => (
+        <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined} class="group flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary sm:flex-col">
+          <div class="rounded-full border border-border bg-secondary p-4 transition-colors group-hover:border-primary/50 group-hover:bg-secondary/80">
+            <Icon name={link.icon} size={24} />
+          </div>
+          <span class="font-medium">{link.label}</span>
+        </a>
+      ))
+    }
+  </div>
+</section>

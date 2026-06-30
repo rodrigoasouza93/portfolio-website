@@ -1,0 +1,72 @@
+---
+import Icon from "@/components/Icon.astro";
+import { contactLinks, profileFacts } from "@/data/profile";
+import { calculateYearsOfExperience } from "@/lib/date";
+
+const yearsOfExperience = calculateYearsOfExperience(new Date("2018-03-01"));
+---
+
+<section class="relative overflow-hidden px-6 pb-16 pt-24 md:pb-20 md:pt-32">
+  <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.68fr)] lg:items-end">
+    <div class="relative z-10">
+      <p class="mb-6 font-mono text-sm uppercase tracking-widest text-primary">
+        Engenheiro de Software & Sistemas
+      </p>
+
+      <h1 class="mb-8 max-w-4xl text-5xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+        Rodrigo Souza<span class="text-primary">.</span>
+        <br />
+        <span class="text-muted-foreground">
+          Software fullstack para produtos que precisam performar.
+        </span>
+      </h1>
+
+      <p class="mb-10 max-w-3xl border-l-2 border-primary/20 pl-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
+        Especialista Fullstack Sênior ({yearsOfExperience}+ anos) com foco em <strong class="text-foreground">Go</strong>,
+        <strong class="text-foreground"> Node.js</strong>, <strong class="text-foreground">TypeScript</strong>,
+        <strong class="text-foreground"> React</strong>, <strong class="text-foreground">Next.js</strong> e
+        <strong class="text-foreground"> React Native</strong>. Uno arquitetura, performance e visão de produto para transformar requisitos complexos em software claro.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="#projects" class="group inline-flex items-center gap-2 rounded-md bg-primary px-7 py-3 font-semibold text-primary-foreground transition-all hover:opacity-90">
+          Ver projetos
+          <Icon name="arrow-right" size={18} class="transition-transform group-hover:translate-x-1" />
+        </a>
+
+        <a href={contactLinks.github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-input px-7 py-3 font-medium text-muted-foreground transition-all hover:border-primary/50 hover:bg-accent hover:text-primary">
+          <Icon name="github" size={18} />
+          GitHub
+        </a>
+
+        <a href={contactLinks.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-input px-7 py-3 font-medium text-muted-foreground transition-all hover:border-primary/50 hover:bg-accent hover:text-primary">
+          <Icon name="linkedin" size={18} />
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <aside class="rounded-lg border border-border bg-card p-6 shadow-xl dark:shadow-none">
+      <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+        <span class="h-2 w-2 rounded-full bg-current shadow-[0_0_0_6px_rgba(16,185,129,0.12)]"></span>
+        Aberto a conversas
+      </div>
+
+      <dl class="mt-6 divide-y divide-border">
+        {
+          profileFacts.map(([label, value]) => (
+            <div class="grid grid-cols-[92px_1fr] gap-4 py-4 first:pt-0">
+              <dt class="text-sm text-muted-foreground">{label}</dt>
+              <dd class="text-sm font-semibold text-card-foreground">{value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <a href={contactLinks.email} class="mt-4 flex items-center justify-center gap-2 rounded-md bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80">
+        <Icon name="mail" size={18} />
+        {contactLinks.emailLabel}
+      </a>
+    </aside>
+  </div>
+</section>

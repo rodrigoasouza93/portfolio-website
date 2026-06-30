@@ -1,0 +1,92 @@
+---
+import Icon from "@/components/Icon.astro";
+
+const capabilities = [
+  {
+    title: "Backend e sistemas",
+    description:
+      "Serviços robustos com Go e Node.js, APIs bem delimitadas, performance e desenho de fronteiras técnicas para produtos escaláveis.",
+    icon: "gauge",
+    technologies: ["Go", "Node.js", "TypeScript", "APIs", "Arquitetura"],
+  },
+  {
+    title: "Frontend web",
+    description:
+      "Interfaces modernas com React, Next.js e TypeScript, equilibrando experiência, manutenibilidade e clareza para o usuário final.",
+    icon: "braces",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    title: "Mobile com produto",
+    description:
+      "Apps React Native e Expo com persistência local, fluxos rápidos e atenção a uso real, incluindo arquiteturas offline-first.",
+    icon: "monitor-smartphone",
+    technologies: ["React Native", "Expo", "NativeWind", "Offline-first"],
+  },
+  {
+    title: "IA aplicada",
+    description:
+      "Uso de IA no desenvolvimento de software com agentes, workflows, RAG, ferramentas, observabilidade e integração com produtos web.",
+    icon: "bot",
+    technologies: ["LLMs", "Agents", "RAG", "MCP", "Evals"],
+  },
+] as const;
+
+const evidence = [
+  ["8+", "anos resolvendo problemas de software desde 2018"],
+  ["React + Next", "web moderna como base constante de atuação"],
+  ["Node.js + Go", "backend com APIs, performance e arquitetura"],
+  ["Pós em Go", "formação voltada a sistemas robustos"],
+] as const;
+---
+
+<section id="competencias" class="px-6 py-16 md:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-10 grid gap-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.55fr)] md:items-end">
+      <div>
+        <p class="mb-3 font-mono text-sm uppercase tracking-widest text-primary">Competências</p>
+        <h2 class="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+          Tecnologias em destaque para uma triagem rápida.
+        </h2>
+      </div>
+      <p class="leading-relaxed text-muted-foreground">
+        A vitrine prioriza as tecnologias em que Rodrigo tem mais profundidade e as combina por contexto: backend, frontend, mobile e IA aplicada ao desenvolvimento.
+      </p>
+    </div>
+
+    <div class="mb-12 grid overflow-hidden rounded-lg border border-border bg-card sm:grid-cols-2 lg:grid-cols-4">
+      {
+        evidence.map(([value, label], index) => (
+          <div class={`min-h-32 p-5 ${index < evidence.length - 1 ? "border-b border-border sm:border-r lg:border-b-0" : ""} ${index === 1 ? "sm:border-r-0 lg:border-r" : ""}`}>
+            <span class="block text-2xl font-bold text-card-foreground">{value}</span>
+            <span class="mt-3 block text-sm text-muted-foreground">{label}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        capabilities.map((capability) => (
+          <article class="rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/40">
+            <div class="flex items-start gap-4">
+              <div class="rounded-md border border-border bg-secondary p-3 text-secondary-foreground">
+                <Icon name={capability.icon} size={22} />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-card-foreground">{capability.title}</h3>
+                <p class="mt-3 leading-relaxed text-muted-foreground">{capability.description}</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {capability.technologies.map((technology) => (
+                <span class="rounded-full border border-border bg-muted px-3 py-1 font-mono text-xs text-muted-foreground">{technology}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
