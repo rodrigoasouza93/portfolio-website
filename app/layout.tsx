@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Portfólio de Rodrigo Souza, engenheiro fullstack com foco em Go, Node.js, TypeScript, React, Next.js, React Native e IA aplicada.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
 }
 
