@@ -1,8 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
+import { ArrowLeft } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-export default function Header() {
+interface HeaderProps {
+  showBackLink?: boolean
+}
+
+export default function Header({ showBackLink = false }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -15,12 +20,27 @@ export default function Header() {
 
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Projetos
-            </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Contato
-            </Link>
+            {showBackLink ? (
+              <Link href="/#projects" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                <ArrowLeft size={16} />
+                Voltar aos projetos
+              </Link>
+            ) : (
+              <>
+                <Link href="#competencias" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Competências
+                </Link>
+                <Link href="#formacao" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Formação
+                </Link>
+                <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Projetos
+                </Link>
+                <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Contato
+                </Link>
+              </>
+            )}
           </nav>
           <ThemeToggle />
         </div>

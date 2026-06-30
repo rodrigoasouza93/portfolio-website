@@ -6,8 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
-  title: "Rodrigo Souza | Engenheiro Fullstack",
-  description: "Especialista em Go & React. Construindo software de alta performance.",
+  title: "Rodrigo Souza | Engenheiro de Software Fullstack",
+  description:
+    "Portfólio de Rodrigo Souza, engenheiro fullstack com foco em Go, Node.js, TypeScript, React, Next.js, React Native e IA aplicada.",
   icons: {
     icon: "/favicon.ico",
   },

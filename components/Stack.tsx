@@ -1,42 +1,108 @@
-import Image from "next/image"
+import { Bot, Braces, Gauge, MonitorSmartphone } from "lucide-react"
+
+const capabilities = [
+  {
+    title: "Backend e sistemas",
+    description:
+      "Serviços robustos com Go e Node.js, APIs bem delimitadas, performance e desenho de fronteiras técnicas para produtos escaláveis.",
+    icon: Gauge,
+    technologies: ["Go", "Node.js", "TypeScript", "APIs", "Arquitetura"],
+  },
+  {
+    title: "Frontend web",
+    description:
+      "Interfaces modernas com React, Next.js e TypeScript, equilibrando experiência, manutenibilidade e clareza para o usuário final.",
+    icon: Braces,
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    title: "Mobile com produto",
+    description:
+      "Apps React Native e Expo com persistência local, fluxos rápidos e atenção a uso real, incluindo arquiteturas offline-first.",
+    icon: MonitorSmartphone,
+    technologies: ["React Native", "Expo", "NativeWind", "Offline-first"],
+  },
+  {
+    title: "IA aplicada",
+    description:
+      "Uso de IA no desenvolvimento de software com agentes, workflows, RAG, ferramentas, observabilidade e integração com produtos web.",
+    icon: Bot,
+    technologies: ["LLMs", "Agents", "RAG", "MCP", "Evals"],
+  },
+]
+
+const evidence = [
+  ["8+", "anos resolvendo problemas de software desde 2018"],
+  ["React + Next", "web moderna como base constante de atuação"],
+  ["Node.js + Go", "backend com APIs, performance e arquitetura"],
+  ["Pós em Go", "formação voltada a sistemas robustos"],
+]
 
 export default function Stack() {
-    const stack = [
-        { name: "Go", icon: "/assets/go-icon.png" },
-        { name: "React", icon: "/assets/react-icon.png" },
-        { name: "TypeScript", icon: "/assets/ts-icon.png" },
-        { name: "JavaScript", icon: "/assets/js-icon.png" },
-        { name: "Node.js", icon: "/assets/node-icon.png" },
-    ]
+  return (
+    <section id="competencias" className="px-6 py-16 md:py-20">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid gap-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.55fr)] md:items-end mb-10">
+          <div>
+            <p className="text-sm font-mono tracking-widest text-primary uppercase mb-3">
+              Competências
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+              Tecnologias em destaque para uma triagem rápida.
+            </h2>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            A vitrine prioriza as tecnologias em que Rodrigo tem mais profundidade e as combina por contexto:
+            backend, frontend, mobile e IA aplicada ao desenvolvimento.
+          </p>
+        </div>
 
-    return (
-        <section className="flex flex-col justify-center px-6 relative overflow-hidden">
-            <div className="py-12 px-6 max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                    <p className="text-sm font-mono tracking-widest text-primary uppercase mb-2">
-                        Tecnologias
-                    </p>
-                    <h2 className="text-3xl font-bold text-foreground">Tech Stack</h2>
-                </div>
-
-                <div className="flex justify-center items-center gap-12 flex-wrap">
-                    {stack.map((tech) => (
-                        <div key={tech.name} className="group relative p-6 rounded-2xl transition-all duration-500 hover:bg-accent border border-transparent hover:border-primary/30">
-                            <div className="w-24 h-24 md:w-32 md:h-32 relative grayscale opacity-70 dark:opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 dark:group-hover:drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]">
-                                <Image
-                                    src={tech.icon || "/placeholder.svg"}
-                                    alt={tech.name}
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-                            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-                                {tech.name}
-                            </span>
-                        </div>
-                    ))}
-                </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-border rounded-lg overflow-hidden bg-card mb-12">
+          {evidence.map(([value, label], index) => (
+            <div
+              key={value}
+              className={`p-5 min-h-32 ${index < evidence.length - 1 ? "border-b sm:border-r lg:border-b-0 border-border" : ""} ${index === 1 ? "sm:border-r-0 lg:border-r" : ""}`}
+            >
+              <span className="block text-2xl font-bold text-card-foreground">{value}</span>
+              <span className="block mt-3 text-sm text-muted-foreground">{label}</span>
             </div>
-        </section>
-    )
+          ))}
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {capabilities.map((capability) => {
+            const Icon = capability.icon
+
+            return (
+              <article
+                key={capability.title}
+                className="rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/40"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="rounded-md border border-border bg-secondary p-3 text-secondary-foreground">
+                    <Icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-card-foreground">{capability.title}</h3>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">{capability.description}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {capability.technologies.map((technology) => (
+                    <span
+                      key={technology}
+                      className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-mono text-muted-foreground"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
 }

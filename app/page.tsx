@@ -1,6 +1,7 @@
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import Stack from "@/components/Stack"
+import Credentials from "@/components/Credentials"
 import SelectedWork from "@/components/SelectedWork"
 import About from "@/components/About"
 import Contact from "@/components/contact"
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Stack />
+      <Credentials />
       <SelectedWork />
       <About />
       <Contact />
@@ -20,4 +22,3 @@ export default function Home() {
     </main>
   )
 }
-

@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('should show the tech stack section', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'Tech Stack' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Tecnologias em destaque para uma triagem rápida.' })).toBeVisible();
 });
 
 test('should show the featured projects section', async ({ page }) => {
