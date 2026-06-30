@@ -1,0 +1,24 @@
+---
+import { calculateYearsOfExperience } from "@/lib/date";
+
+const yearsOfExperience = calculateYearsOfExperience(new Date("2018-03-01"));
+---
+
+<section class="mx-auto my-12 max-w-4xl rounded-lg border border-border bg-card px-6 py-12 shadow-2xl dark:shadow-none">
+  <div class="grid items-center gap-12 md:grid-cols-2">
+    <div class="space-y-6">
+      <h2 class="text-3xl font-bold text-card-foreground">Sobre Mim</h2>
+      <p class="leading-relaxed text-muted-foreground">
+        Sou um desenvolvedor apaixonado por resolver problemas complexos de performance e escalabilidade. Com mais de {yearsOfExperience} anos de experiência, especializei-me no ecossistema JavaScript/TypeScript e, mais recentemente, mergulhei fundo em Go para construir backends robustos.
+      </p>
+      <p class="leading-relaxed text-muted-foreground">
+        Tenho Pós-Graduação em Desenvolvimento Go, o que me permite unir a agilidade do frontend moderno com a eficiência do backend de alta performance.
+      </p>
+    </div>
+    <div class="relative">
+      <div class="relative aspect-square overflow-hidden rounded-lg border-4 border-background bg-muted shadow-xl">
+        <img src="/assets/profile.jpg" alt="Rodrigo Souza" class="h-full w-full object-cover" width="640" height="640" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </div>
+</section>

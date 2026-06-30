@@ -1,0 +1,151 @@
+---
+import Icon from "@/components/Icon.astro";
+import type { Project } from "@/data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="container mx-auto px-4 pb-16 pt-24">
+  <h1 class="mb-4 text-3xl font-bold text-foreground">{project.title}</h1>
+
+  <div class="mb-6 flex flex-wrap gap-2">
+    {
+      project.technologies.map((tech) => (
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">{tech}</span>
+      ))
+    }
+  </div>
+
+  <p class="mb-8 text-muted-foreground">{project.fullDescription}</p>
+
+  <div class="mb-12 grid gap-8 md:grid-cols-2">
+    <div class="rounded-lg bg-muted p-4">
+      <div class="relative h-64 overflow-hidden rounded-lg md:h-80">
+        <img src={project.image} alt={project.title} class="h-full w-full object-cover" width="960" height="720" loading="eager" decoding="async" />
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between">
+      <div class="space-y-6">
+        <div class="flex flex-wrap gap-4">
+          {
+            project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+                Ver demo
+              </a>
+            )
+          }
+
+          {
+            project.sourceUrl && (
+              <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-input px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                <Icon name="code" size={16} />
+                Código Fonte
+              </a>
+            )
+          }
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <h2 class="mb-1 text-sm text-muted-foreground">Duração do Projeto</h2>
+            <p class="font-semibold text-foreground">{project.duration}</p>
+          </div>
+          <div>
+            <h2 class="mb-1 text-sm text-muted-foreground">Tamanho da Equipe</h2>
+            <p class="font-semibold text-foreground">{project.teamSize}</p>
+          </div>
+          <div>
+            <h2 class="mb-1 text-sm text-muted-foreground">Função</h2>
+            <p class="font-semibold text-foreground">{project.role}</p>
+          </div>
+          <div>
+            <h2 class="mb-1 text-sm text-muted-foreground">Conclusão</h2>
+            <p class="font-semibold text-foreground">{project.completion}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-12 grid gap-12 md:grid-cols-2">
+    <div>
+      <h2 class="mb-6 text-2xl font-bold text-foreground">Visão Geral</h2>
+      <div class="space-y-4 text-muted-foreground">
+        {project.overview.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mb-6 text-2xl font-bold text-foreground">Principais Funcionalidades</h2>
+      <ul class="space-y-4">
+        {
+          project.features.map((feature) => (
+            <li class="flex items-start">
+              <Icon name="check" size={20} class="mr-2 mt-1 shrink-0 text-primary" />
+              <span class="text-muted-foreground">{feature}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  {
+    project.challenges && (
+      <div class="mb-12">
+        <h2 class="mb-6 text-2xl font-bold text-foreground">Desafios e Soluções</h2>
+        <div class="space-y-8">
+          {project.challenges.map((challenge) => (
+            <div class="rounded-lg bg-muted/50 p-6">
+              <h3 class="mb-2 text-lg font-bold text-foreground">{challenge.title}</h3>
+              <p class="text-muted-foreground">{challenge.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <div class="grid gap-12 md:grid-cols-2">
+    <div>
+      <h2 class="mb-6 text-2xl font-bold text-foreground">Tecnologias</h2>
+      <ul class="space-y-4">
+        {
+          project.techStack.map((tech) => (
+            <li class="flex items-start">
+              <div class="mr-3 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border bg-secondary text-xs font-bold text-secondary-foreground">
+                {tech.badge}
+              </div>
+              <div>
+                <h3 class="font-medium text-foreground">{tech.name}</h3>
+                {tech.description && <p class="text-sm text-muted-foreground">{tech.description}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    {
+      project.testimonial && (
+        <div class="rounded-lg bg-muted/50 p-6">
+          <div class="mb-4 flex items-center">
+            <div class="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-secondary font-semibold text-secondary-foreground">
+              RS
+            </div>
+            <div>
+              <h3 class="font-bold text-foreground">{project.testimonial.name}</h3>
+              <p class="text-sm text-muted-foreground">{project.testimonial.role}</p>
+            </div>
+          </div>
+          <p class="italic text-muted-foreground">"{project.testimonial.text}"</p>
+        </div>
+      )
+    }
+  </div>
+</article>

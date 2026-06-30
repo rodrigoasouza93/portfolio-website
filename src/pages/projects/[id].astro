@@ -1,0 +1,34 @@
+---
+import Header from "@/components/Header.astro";
+import ProjectDetail from "@/components/ProjectDetail.astro";
+import { getProjectById, projects } from "@/data/projects";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+  }));
+}
+
+const project = getProjectById(Astro.params.id ?? "");
+
+if (!project) {
+  return Astro.redirect("/404");
+}
+
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout
+  title={`${project.title} | Rodrigo Souza`}
+  description={project.description}
+  canonicalPath={`/projects/${project.id}`}
+>
+  <main class="min-h-screen">
+    <Header showBackLink />
+    <ProjectDetail project={project} />
+    <footer class="py-8 text-center text-sm text-muted-foreground">
+      © {currentYear} Rodrigo Souza. All rights reserved.
+    </footer>
+  </main>
+</BaseLayout>

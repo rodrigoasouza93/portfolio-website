@@ -1,0 +1,85 @@
+---
+import Icon from "@/components/Icon.astro";
+---
+
+<div class="relative">
+  <button
+    id="theme-toggle"
+    type="button"
+    class="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+    aria-label="Alternar tema"
+    aria-haspopup="menu"
+    aria-expanded="false"
+  >
+    <Icon name="sun" class="h-5 w-5 dark:hidden" />
+    <Icon name="moon" class="hidden h-5 w-5 dark:block" />
+  </button>
+  <div
+    id="theme-menu"
+    class="absolute right-0 mt-2 hidden min-w-32 rounded-md border border-border bg-card p-1 text-sm text-card-foreground shadow-lg"
+    role="menu"
+    aria-label="Escolher tema"
+  >
+    <button type="button" class="theme-option w-full cursor-pointer rounded-sm px-3 py-2 text-left hover:bg-accent" data-theme="light" role="menuitem">
+      Light
+    </button>
+    <button type="button" class="theme-option w-full cursor-pointer rounded-sm px-3 py-2 text-left hover:bg-accent" data-theme="dark" role="menuitem">
+      Dark
+    </button>
+    <button type="button" class="theme-option w-full cursor-pointer rounded-sm px-3 py-2 text-left hover:bg-accent" data-theme="system" role="menuitem">
+      System
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const menu = document.getElementById("theme-menu");
+    const options = document.querySelectorAll(".theme-option");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const getStoredTheme = () => localStorage.getItem("theme") || "system";
+    const resolveTheme = (theme) => (theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme);
+
+    const applyTheme = (theme) => {
+      root.classList.toggle("dark", resolveTheme(theme) === "dark");
+      root.dataset.theme = theme;
+    };
+
+    const closeMenu = () => {
+      menu?.classList.add("hidden");
+      toggle?.setAttribute("aria-expanded", "false");
+    };
+
+    applyTheme(getStoredTheme());
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = !menu?.classList.contains("hidden");
+      menu?.classList.toggle("hidden", isOpen);
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        const theme = option.getAttribute("data-theme") || "system";
+        localStorage.setItem("theme", theme);
+        applyTheme(theme);
+        closeMenu();
+      });
+    });
+
+    mediaQuery.addEventListener("change", () => {
+      if (getStoredTheme() === "system") {
+        applyTheme("system");
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!menu?.contains(event.target) && !toggle?.contains(event.target)) {
+        closeMenu();
+      }
+    });
+  })();
+</script>

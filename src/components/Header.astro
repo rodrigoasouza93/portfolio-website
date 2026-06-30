@@ -1,0 +1,41 @@
+---
+import Icon from "@/components/Icon.astro";
+import LogoMark from "@/components/LogoMark.astro";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+
+interface Props {
+  showBackLink?: boolean;
+}
+
+const { showBackLink = false } = Astro.props;
+---
+
+<header class="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-300">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+    <a href="/" class="flex items-center gap-2">
+      <LogoMark class="h-10 w-10 text-foreground" />
+      <span class="font-bold tracking-tight text-foreground">RODRIGO SOUZA</span>
+    </a>
+
+    <div class="flex items-center gap-8">
+      <nav class="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+        {
+          showBackLink ? (
+            <a href="/#projects" class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+              <Icon name="arrow-left" size={16} />
+              Voltar aos projetos
+            </a>
+          ) : (
+            <>
+              <a href="#competencias" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Competências</a>
+              <a href="#formacao" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Formação</a>
+              <a href="#projects" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Projetos</a>
+              <a href="#contact" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Contato</a>
+            </>
+          )
+        }
+      </nav>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
