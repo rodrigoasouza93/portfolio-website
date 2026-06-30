@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "astro-static-portfolio": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/astro-static-portfolio/SKILL.md",
+      "computedHash": "181ed8b9bd896e674d32654df6c7dc4b0c9e8989942b4fb7251f96e76e15c48a"
+    },
+    "code-standards-en": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/code-standards-en/SKILL.md",
+      "computedHash": "fefe24ccdb4b106db2864972e8039715acdbdb1fd802806a37dd623e83b4f960"
+    },
+    "context7": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/context7/SKILL.md",
+      "computedHash": "355ab3da666c3873d8ba175a96859f3a93eceb223d828bfe775f52f881b4a598"
+    },
+    "next-best-practices": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/next-best-practices/SKILL.md",
+      "computedHash": "c78f952d4e98bf3694856dbf70c03a6037d4e258ff3701f2642bfdf108549a25"
+    },
+    "nodejs-typescript-conventions": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/nodejs-typescript-conventions/SKILL.md",
+      "computedHash": "8b8e4a6616e29b0960ab6de826b738c7bd3f5db5411efa50deef45944da152e6"
+    },
+    "react-frontend-conventions": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/react-frontend-conventions/SKILL.md",
+      "computedHash": "1c92646887afb3a4a46909cd784a761503d143be9208c6e6c5b10f15c529f9a2"
+    },
+    "repo-folder-structure": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/repo-folder-structure/SKILL.md",
+      "computedHash": "ef4c648dd78d8177ce4925d71c560dfc0d495df5a4cd96d42db7f08ef58a7361"
+    },
+    "skill-best-practices": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/skill-best-practices/SKILL.md",
+      "computedHash": "f11a499a7410803d43c33ad0585b140bdd626390fc4277b61ae95d845d8303c3"
+    },
+    "ui-ux-pro-max": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "b3ab45c714a7222dbf41bff153fc0570640e356ba272417d396da950a7863a78"
+    },
+    "vitest-testing": {
+      "source": "local",
+      "sourceType": "workspace",
+      "skillPath": ".agents/skills/vitest-testing/SKILL.md",
+      "computedHash": "16a77fb29e6c7ec7ee3b20bdb8fe724e8e0b9ec208353b9d579adcd8a1e029c2"
+    }
+  }
+}
