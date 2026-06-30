@@ -1,6 +1,6 @@
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
+import LogoMark from "@/components/logo-mark"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface HeaderProps {
@@ -12,9 +12,7 @@ export default function Header({ showBackLink = false }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-12 h-12 relative">
-            <Image src="/assets/logo.png" alt="Logo" fill className="object-contain" />
-          </div>
+          <LogoMark className="h-10 w-10 text-foreground" />
           <span className="font-bold text-foreground tracking-tight">RODRIGO SOUZA</span>
         </Link>
 
